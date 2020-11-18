@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 const bodyparser = require("body-parser");
+const nodemon = require("nodemon");
 app.use(bodyparser.json());
 
 let mentorData = [
@@ -108,4 +109,6 @@ app.get("/assignedStudents/:id", (req, res) => {
   res.status(200).json(mentor.studentsAssigned);
 });
 
-app.listen(4000);
+const port = process.env.PORT || 4000;
+app.listen(port,()=>{console.log("Server started at port "+port)})
+
